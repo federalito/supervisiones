@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himno Protección Federal</title>
+    <link rel="stylesheet" href="clases/himno.css">
+</head>
+<body>
+    <div class="music-container">
+        <button id="playButton" class="btn-music">🎵 Himno Protección</button>
+        <audio id="hymnAudio" src="HimnoProteccion.mp3"></audio>
+    </div>
+
+    <div class="content">
+        <!-- Logo centrado arriba del título -->
+        <div class="logo-container">
+            <img src="nuevologo.webp" alt="Logo Estrella">
+        </div>
+
+        <h1>Protección ¡Federal!</h1>
+
+        <div class="hymn-text">
+            <p>Protección ¡Federal!<br>
+                servimos a la Patria con lealtad,<br>
+                seguridad, vigilancia y protección,<br>
+                a los bienes de la Nación.<br>
+                Policías preparados para la seguridad,<br>
+                con doctrina, disciplina y sentido de lealtad,<br>
+                dignos representantes de la autoridad,<br>
+                comprometidos con nuestra sociedad.<br>
+                Valeroso siempre marcho a cumplir con el deber<br>
+                en todo el territorio nacional,<br>
+                instalaciones o personas he de proteger,<br>
+                inquebrantable es mi honor y honestidad.<br>
+                Una estrella llevo junto al pecho, cerca al corazón,<br>
+                siete puntas son valores de nuestra institución,<br>
+                con justicia, disciplina, respeto y vocación,<br>
+                profesionalismo, ética, igualdad.<br>
+                Protección ¡Federal!<br>
+                Servimos a la Patria con lealtad,<br>
+                seguridad, vigilancia y protección<br>
+                a los bienes de la Nación.<br>
+                Profesionalismo es parte de mi formación,<br>
+                en confianza y armamento es mi certificación,<br>
+                técnicas y tácticas son el actuar de mi deber,<br>
+                apegado a los derechos humanos.<br>
+                ¡Mi Patria!, mi Bandera y mi familia<br>
+                me inspira a trabajar arduamente día a día,<br>
+                para ser un servidor de excelencia,<br>
+                con eficacia, oportunidad y suficiencia.<br>
+                Contribuyendo al esfuerzo de la seguridad,<br>
+                Protección Federal siempre garante de la Ley,<br>
+                policías incansables, Policías con Honor,<br>
+                ¡para lograr un México en paz!<br>
+                Protección ¡Federal!<br>
+                Servimos a la Patria con lealtad,<br>
+                seguridad, vigilancia y protección,<br>
+                a los bienes de la Nación.</p>
+            </div>
+
+        <div class="button-container">
+            <a href="formulario2.html">
+                <button class="btn-option">Regresar</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const playButton = document.getElementById('playButton');
+        const hymnAudio = document.getElementById('hymnAudio');
+
+        let isPlaying = false;
+
+        playButton.addEventListener('click', () => {
+            if (isPlaying) {
+                hymnAudio.pause();
+                playButton.textContent = '🎵 Himno Protección';
+            } else {
+                hymnAudio.play();
+                playButton.textContent = '⏸ Pausar Himno';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Temporizador de inactividad
+        const tiempoInactividad = 120000; // 2 minutos
+        let temporizadorInactividad;
+
+        function redirigirAlLogin() {
+            window.location.href = "index.html"; // Cambia "index.html" por la ruta correcta
+        }
+
+        function reiniciarTemporizador() {
+            clearTimeout(temporizadorInactividad);
+            temporizadorInactividad = setTimeout(redirigirAlLogin, tiempoInactividad);
+        }
+
+        function detectarActividad() {
+            reiniciarTemporizador();
+        }
+
+        document.addEventListener("mousemove", detectarActividad);
+        document.addEventListener("keypress", detectarActividad);
+        document.addEventListener("click", detectarActividad);
+
+        reiniciarTemporizador();
+    </script>
+</body>
+</html>

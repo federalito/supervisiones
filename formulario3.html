@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Supervisión - Paso 1</title>
+    <link rel="stylesheet" href="clases/formulario3.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logocecom.webp" alt="Logotipo">
+            <h1>FORMULARIO DE SUPERVISIONES DE LAS REGIONES I, II, III, IV, V, VI, VII, VIII</h1>
+        </div>
+        <p><strong>El presente formulario tiene como objetivo que los integrantes desplegados en servicio informen de manera oportuna las supervisiones operativas, virtuales y visitas de inspección interna.</strong></p>
+        <form id="formulario">
+            <div class="form-group">
+                <label for="empleado">1. Proporcione su No. de Empleado</label>
+                <input type="number" id="empleado" name="empleado" placeholder="Ingrese su número de empleado" required>
+                <input type="button" id="buscarEmpleado" value="Buscar Empleado">
+            </div>
+
+            <div class="form-group">
+                <label for="grado">2. Grado</label>
+                <input type="text" id="grado" name="grado" value="Este campo se llenará automáticamente" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">3. Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" value="Este campo se llenará automáticamente" readonly>
+            </div>
+
+            <input type="submit" value="Siguiente">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('buscarEmpleado').addEventListener('click', function () {
+            const numeroEmpleado = document.getElementById('empleado').value;
+
+            if (numeroEmpleado) {
+                const empleados = {
+                    "708545": {
+                        "grado": "POLICIA",
+                        "nombre_completo": "VELASCO VELASCO AARON JAVIER"
+                    }
+                };
+
+                const empleado = empleados[numeroEmpleado];
+
+                if (empleado) {
+                    document.getElementById('grado').value = empleado.grado;
+                    document.getElementById('nombre').value = empleado.nombre_completo;
+                } else {
+                    alert('Empleado no encontrado');
+                }
+            } else {
+                alert('Por favor, ingrese un número de empleado.');
+            }
+        });
+
+        document.getElementById('formulario').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const empleado = document.getElementById('empleado').value;
+            const grado = document.getElementById('grado').value;
+            const nombre = document.getElementById('nombre').value;
+
+            if (!empleado || !grado || !nombre) {
+                alert('Por favor, complete todos los campos antes de continuar.');
+            } else {
+                window.location.href = 'formulario4.html';
+            }
+        });
+    </script>
+</body>
+</html>

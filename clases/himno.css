@@ -1,0 +1,218 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo de pantalla con imagen superpuesta */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
+        url('cecom.jpg'),
+        url('fondopantalla.webp');
+    background-size: cover, cover, cover;
+    background-position: center, center, center;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-attachment: fixed, fixed, fixed;
+    font-family: Arial, sans-serif;
+    color: #19384a;
+    text-align: center;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Sombra más fuerte */
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: 0 0 50px rgba(8, 31, 92, 0.9); /* Sombra más intensa */
+    }
+    50% {
+        box-shadow: 0 0 80px rgba(8, 31, 92, 1); /* Sombra aún más intensa */
+    }
+    100% {
+        box-shadow: 0 0 50px rgba(8, 31, 92, 0.9); /* Vuelve a la sombra inicial */
+    }
+}
+
+/* Contenedor del logo centrado */
+.logo-container {
+    text-align: center;
+    margin-bottom: 15px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.logo-container img {
+    width: 150px; /* Tamaño del logo */
+    max-width: 200px;
+    height: auto;
+}
+
+/* Botón de reproducción de himno */
+.music-container {
+    margin-top: 20px;
+    animation: fadeIn 1.4s ease-in-out;
+}
+
+.btn-music {
+    background-color: #54162B;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7); /* Sombra más intensa */
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    display: inline-block;
+}
+
+/* Efecto hover en el botón de Himno */
+.btn-music:hover {
+    background-color: #8B2335;
+    transform: scale(1.08);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9); /* Sombra más intensa al hacer hover */
+}
+
+/* Contenedor principal */
+.content {
+    max-width: 600px;
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(8, 31, 92, 0.9); /* Sombra azul más intensa */
+    text-align: center;
+    margin: 30px auto;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1s ease-in-out, slideIn 0.8s ease-out, shadowAnimation 3s ease-in-out infinite;
+}
+
+/* Estilo del título */
+h1 {
+    font-size: 1.8rem;
+    color: #14506e;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); /* Sombra de texto más fuerte */
+    margin-bottom: 15px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Estilo del texto del himno */
+.hymn-text p {
+    font-size: 0.9rem;
+    line-height: 1.8; /* Aumenta la altura de línea para mejor lectura */
+    font-family: 'Georgia', serif;
+    margin-bottom: 15px; /* Añade espacio entre párrafos */
+    text-align: center;
+    animation: fadeIn 1.4s ease-in-out;
+}
+
+/* Contenedor del botón de regreso */
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+    animation: fadeIn 1.6s ease-in-out;
+}
+
+/* Botón de regreso con el mismo estilo que el de Himno Protección */
+.btn-option {
+    background-color: #54162B;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    display: inline-block;
+    text-decoration: none; /* Evita subrayado en el enlace */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7); /* Sombra más intensa */
+}
+
+/* Efecto hover en el botón de regreso */
+.btn-option:hover {
+    background-color: #8B2335;
+    transform: scale(1.08);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9); /* Sombra más intensa al hacer hover */
+}
+
+/* RESPONSIVIDAD */
+
+/* Ajustes para tablets */
+@media (max-width: 768px) {
+    .content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .hymn-text p {
+        font-size: 0.85rem;
+    }
+
+    .btn-option, .btn-music {
+        font-size: 1rem;
+        padding: 10px 30px;
+    }
+
+    .logo-container img {
+        width: 130px; /* Ajuste en tabletas */
+    }
+}
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+    .content {
+        width: 100%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .hymn-text p {
+        font-size: 0.8rem;
+    }
+
+    .btn-option, .btn-music {
+        font-size: 0.9rem;
+        padding: 8px 25px;
+    }
+
+    .logo-container img {
+        width: 100px; /* Ajuste en móviles */
+    }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión y Visión</title>
+    <link rel="stylesheet" href="clases/misionvision.css">
+</head>
+<body>
+    <div class="content">
+        <img src="clases/logoestrella.webp" alt="Logo Estrella" class="logo">
+
+        <section class="info-section">
+            <h2>Misión</h2>
+            <p>
+                Nuestra misión es proporcionar servicios de alta calidad a la comunidad, 
+                promoviendo la excelencia en todas nuestras actividades y asegurando un 
+                impacto positivo en la sociedad.
+            </p>
+        </section>
+
+        <section class="info-section">
+            <h2>Visión</h2>
+            <p>
+                Ser una institución líder reconocida por su compromiso con la innovación, 
+                la eficiencia y la responsabilidad social, ofreciendo soluciones integrales 
+                para el beneficio de todos.
+            </p>
+        </section>
+
+        <div class="button-container">
+            <a href="formulario2.html">
+                <button class="btn-option">Regresar</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Tiempo de inactividad en milisegundos (2 minutos = 120,000 ms)
+        const tiempoInactividad = 120000; // 2 minutos
+        let temporizadorInactividad;
+
+        // Función para redirigir al usuario
+        function redirigirAlLogin() {
+            window.location.href = "index.html"; // Cambia "index.html" por la ruta correcta
+        }
+
+        // Reiniciar el temporizador de inactividad
+        function reiniciarTemporizador() {
+            clearTimeout(temporizadorInactividad); // Limpiar el temporizador anterior
+            temporizadorInactividad = setTimeout(redirigirAlLogin, tiempoInactividad); // Iniciar nuevo temporizador
+        }
+
+        // Detectar actividad del usuario
+        function detectarActividad() {
+            reiniciarTemporizador(); // Reiniciar el temporizador cada vez que hay actividad
+        }
+
+        // Eventos para detectar actividad
+        document.addEventListener("mousemove", detectarActividad); // Movimiento del mouse
+        document.addEventListener("keypress", detectarActividad); // Teclas presionadas
+        document.addEventListener("click", detectarActividad); // Clics
+
+        // Iniciar el temporizador al cargar la página
+        reiniciarTemporizador();
+    </script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+/* Variables CSS */
+:root {
+    --color-primary: #691c32;
+    --color-secondary: #8e2a46;
+    --color-text: #003366;
+    --bg-opacity: rgba(255, 255, 255, 0.9);
+}
+
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Animación de fondo con gradientes en movimiento */
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Estilos generales */
+body {
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(270deg, #081F5C, #54162B, #871D3E, #19384a);
+    background-size: 400% 400%;
+    animation: moveGradient 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Imagen traslúcida */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('cecom.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.15;
+    z-index: 1;
+}
+
+/* Animación Slide-in + Fade-in (de abajo hacia arriba) */
+@keyframes slide-in-fade-in {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animación de sombra */
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: 0 0 30px rgba(8, 31, 92, 0.9);
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(8, 31, 92, 0.9);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(8, 31, 92, 0.9);
+    }
+}
+
+/* Contenedor principal con animación */
+.container {
+    background-color: var(--bg-opacity);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 85%;
+    z-index: 2;
+    position: relative;
+    animation: slide-in-fade-in 1s ease-out, shadowAnimation 3s ease-in-out infinite;
+}
+
+/* Encabezado */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.header img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.header h1 {
+    font-size: 1.4em;
+    color: var(--color-text);
+    margin: 0;
+    text-align: center;
+    flex: 1;
+}
+
+h2 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: var(--color-text);
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+th {
+    background-color: #f3f3f3;
+    color: var(--color-text);
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+textarea:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    margin-top: 8px;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+    text-align: left;
+    font-size: 0.9em;
+    color: var(--color-text);
+}
+
+/* Estilos para el campo de subida de archivos */
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    font-size: 0.9em;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="file"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+small {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.8em;
+    color: #666;
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+    .container {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .header img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .header h1 {
+        font-size: 1.2em;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    th, td {
+        font-size: 0.8em;
+    }
+
+    textarea {
+        font-size: 0.85em;
+    }
+
+    input[type="submit"] {
+        font-size: 0.9em;
+    }
+}

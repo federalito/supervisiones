@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registro de supervisión exitoso del sistema CECOM.">
+    <meta name="author" content="CECOM">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Registro Exitoso</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="stylesheet" href="clases/registroformulario.css"> <!-- Enlace al archivo CSS -->
+    <style>
+        /* Estilo para el fondo con opacidad */
+        body {
+            background-image: url('mujerlogo.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4; /* Opacidad del 40% */
+        }
+        /* Asegurar que el contenido no tenga opacidad */
+        body > * {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo CECOM -->
+    <header>
+        <img src="logocecom.webp" alt="Logo del Centro de Comunicación CECOM" class="logo" loading="lazy">
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 lang="es">REGISTRO DE SUPERVISIÓN EXITOSO</h1>
+            <p lang="es">Gracias por completar la supervisión. Sus datos han sido registrados con éxito.</p>
+            <p class="folio">Folio: <span id="folio"><?php echo $ticket; ?></span></p>
+            <form action="formulario2.php" method="POST">
+                <input type="submit" value="Nueva Supervisión" aria-label="Iniciar nueva supervisión">
+            </form>
+        </div>
+    </main>
+</body>
+</html>

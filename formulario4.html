@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Supervisión</title>
+    <link rel="stylesheet" href="clases/formulario4.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logocecom.webp" alt="Logo CECOM">
+            <h1>Formulario de Supervisión</h1>
+        </div>
+        <form id="segundoForm">
+            <!-- Grupo: Tipo de Supervisión -->
+            <div class="form-group">
+                <label for="tipo">4. Indique el tipo de Supervisión</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="operativa">SUPERVISIÓN OPERATIVA</option>
+                    <option value="virtual">SUPERVISIÓN VIRTUAL</option>
+                    <option value="inspeccion">VISITA DE INSPECCIÓN OPERATIVA</option>
+                    <option value="inspeccion">VISITA DE INSPECCIÓN ADMINISTRATIVA</option>
+                </select>
+            </div>
+
+            <!-- Grupo: Región -->
+            <div class="form-group">
+                <label for="region">5. Indique a la Región que Pertenece</label>
+                <select id="region" name="region" required>
+                    <option value="">Seleccione su región</option>
+                    <option value="i">REGIÓN I</option>
+                    <option value="ii">REGIÓN II</option>
+                    <option value="iii">REGIÓN III</option>
+                    <option value="iv">REGIÓN IV</option>
+                    <option value="v">REGIÓN V</option>
+                    <option value="vi">REGIÓN VI</option>
+                    <option value="vii">REGIÓN VII</option>
+                    <option value="viii">REGIÓN VIII</option>
+                    <option value="proteccion">PROTECCIÓN A PERSONAS</option>
+                </select>
+            </div>
+
+            <!-- Grupo: Servicio -->
+            <div class="form-group">
+                <label for="servicio">6. Indique el Servicio</label>
+                <select id="servicio" name="servicio" required>
+                    <option value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <!-- Grupo: Instalación -->
+            <div class="form-group">
+                <label for="instalacion">7. Indique la Instalación</label>
+                <select id="instalacion" name="instalacion" required>
+                    <option value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <!-- Botón de envío -->
+            <input type="submit" value="Siguiente">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('segundoForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const tipo = document.getElementById('tipo').value;
+            const region = document.getElementById('region').value;
+            const servicio = document.getElementById('servicio').value;
+            const instalacion = document.getElementById('instalacion').value;
+
+            if (!tipo || !region || !servicio || !instalacion) {
+                alert('Por favor, complete todos los campos antes de continuar.');
+            } else {
+                window.location.href = 'formulario5.html';
+            }
+        });
+
+        // Función para cargar opciones desde la base de datos (simulada con JavaScript por ahora)
+        function cargarOpciones() {
+            const servicios = ["Servicio 1", "Servicio 2", "Servicio 3"]; // Datos simulados de BD
+            const instalaciones = ["Instalación A", "Instalación B", "Instalación C"]; // Datos simulados de BD
+
+            const servicioSelect = document.getElementById("servicio");
+            const instalacionSelect = document.getElementById("instalacion");
+
+            // Limpiar y añadir opciones dinámicamente
+            servicioSelect.innerHTML = '<option value="">Seleccione una opción</option>';
+            instalacionSelect.innerHTML = '<option value="">Seleccione una opción</option>';
+
+            servicios.forEach(serv => {
+                let option = document.createElement("option");
+                option.value = serv.toLowerCase().replace(/\s+/g, '_');
+                option.textContent = serv;
+                servicioSelect.appendChild(option);
+            });
+
+            instalaciones.forEach(inst => {
+                let option = document.createElement("option");
+                option.value = inst.toLowerCase().replace(/\s+/g, '_');
+                option.textContent = inst;
+                instalacionSelect.appendChild(option);
+            });
+        }
+
+        // Cargar datos simulados al cargar la página
+        document.addEventListener("DOMContentLoaded", cargarOpciones);
+    </script>
+</body>
+</html>

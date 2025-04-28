@@ -1,0 +1,206 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo de pantalla con imagen superpuesta */
+html, body {
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+        url('cecom.jpg'),
+        url('fondopantalla.webp');
+    background-size: cover, cover, cover; /* Ajusta todas las imágenes */
+    background-position: center, center, center;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-attachment: fixed, fixed, fixed;
+    font-family: Arial, sans-serif;
+    color: #081F5C;
+    overflow-y: auto;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Sombra más fuerte */
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: 0 0 50px rgba(8, 31, 92, 0.9); /* Sombra más intensa */
+    }
+    50% {
+        box-shadow: 0 0 80px rgba(8, 31, 92, 1); /* Sombra aún más intensa */
+    }
+    100% {
+        box-shadow: 0 0 50px rgba(8, 31, 92, 0.9); /* Vuelve a la sombra inicial */
+    }
+}
+
+/* Contenedor principal centrado */
+.content {
+    max-width: 600px;
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(8, 31, 92, 0.9); /* Sombra azul más intensa */
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1s ease-in-out, slideIn 0.8s ease-out, shadowAnimation 3s ease-in-out infinite;
+}
+
+/* Estilo del título */
+h1 {
+    font-size: 2rem;
+    color: #081F5C;
+    margin-bottom: 20px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Texto introductorio */
+.intro-text, .closing-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    animation: fadeIn 1.4s ease-in-out;
+}
+
+/* Lista de divisas centrada */
+.list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1rem;
+    animation: fadeIn 1.6s ease-in-out;
+}
+
+.list li {
+    margin-bottom: 10px;
+}
+
+/* Contenedor de la imagen centrada */
+.image-container {
+    margin-top: 20px;
+    animation: fadeIn 1.8s ease-in-out;
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7); /* Sombra más intensa */
+}
+
+/* Contenedor de los videos */
+.video-container {
+    max-width: 800px;
+    width: 90%;
+    margin: 50px auto;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(8, 31, 92, 0.9); /* Sombra azul más intensa */
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1s ease-in-out, slideIn 0.8s ease-out, shadowAnimation 3s ease-in-out infinite;
+}
+
+.video-container h2 {
+    font-size: 1.8rem;
+    color: #081F5C;
+    margin-bottom: 20px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.video h3 {
+    font-size: 1.2rem;
+    color: #081F5C;
+    margin-bottom: 10px;
+}
+
+/* Responsividad de los videos */
+.video iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Contenedor del botón con separación */
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px; /* Separación inferior */
+    animation: fadeIn 1.6s ease-in-out;
+}
+
+.btn-option {
+    background-color: #691c32;
+    color: white;
+    font-size: 1.2rem;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7); /* Sombra más intensa */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efecto hover en el botón */
+.btn-option:hover {
+    background-color: #8B2335;
+    transform: scale(1.08);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9); /* Sombra más intensa al hacer hover */
+}
+
+/* RESPONSIVIDAD */
+
+/* Ajustes para móviles */
+@media (max-width: 480px) {
+    .content, .video-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    h1, .video-container h2 {
+        font-size: 1.4rem;
+    }
+
+    .video iframe {
+        height: 200px;
+    }
+
+    .btn-option {
+        font-size: 1rem;
+        padding: 10px 30px;
+    }
+
+    .button-container {
+        margin-bottom: 30px; /* Ajuste en móviles */
+    }
+}

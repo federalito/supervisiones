@@ -1,0 +1,245 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(270deg, #081F5C, #54162B, #871D3E, #19384a);
+    background-size: 400% 400%;
+    animation: moveGradient 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #003366;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animación de fondo con gradientes en movimiento */
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Imagen traslúcida encima del fondo */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('cecom.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.15;
+    z-index: 1;
+}
+
+/* Animaciones */
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animación de sombra */
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: 0 0 30px rgba(8, 31, 92, 0.9); /* Sombra inicial más grande y visible */
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(8, 31, 92, 0.9); /* Sombra más grande y visible */
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(8, 31, 92, 0.9); /* Volver a la sombra inicial */
+    }
+}
+
+/* Contenedor principal */
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    max-width: 500px; /* Ancho máximo reducido */
+    width: 90%;
+    animation: slideIn 0.5s ease-out, shadowAnimation 3s ease-in-out infinite; /* Agregar la animación de sombra */
+    z-index: 2;
+    margin: 0 auto; /* Centrar el contenedor */
+}
+
+form label, form input, form p {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Encabezado */
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header img {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+}
+
+.header h1 {
+    font-size: 1.4em;
+    line-height: 1.4;
+    color: #003366;
+    margin: 0;
+}
+
+/* Estilos para la descripción centrada */
+form p {
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Estilos para los grupos de formulario */
+.form-group {
+    margin-bottom: 15px; /* Reducir el margen inferior */
+    text-align: center; /* Centrar el contenido */
+}
+
+/* Estilos para los campos de entrada */
+input {
+    width: 70%; /* Reducir el ancho de los campos */
+    padding: 10px; /* Reducir el padding */
+    border: 1px solid #ccc; /* Borde más suave */
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin: 0 auto; /* Centrar los campos */
+    display: block; /* Asegurar que los campos ocupen solo el ancho definido */
+    background-color: #f9f9f9; /* Fondo más claro */
+    text-align: center; /* Centrar el texto */
+}
+
+input:focus {
+    border-color: #4CAF50; /* Borde verde al enfocar */
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3); /* Sombra suave al enfocar */
+}
+
+/* Campos de solo lectura */
+input[readonly] {
+    background-color: #f3f3f3;
+    cursor: not-allowed;
+    font-weight: bold; /* Resaltar el texto */
+    color: #003366; /* Color del texto */
+}
+
+/* Estilos para los botones */
+input[type="submit"], input[type="button"] {
+    width: 70%; /* Reducir el ancho de los botones */
+    padding: 10px; /* Reducir el padding */
+    margin: 10px auto; /* Centrar los botones */
+    display: block; /* Asegurar que los botones ocupen solo el ancho definido */
+    background-color: #54162B;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #3a0f1d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+input[type="submit"]:active, input[type="button"]:active {
+    transform: translateY(0);
+}
+
+/* Ocultar las flechas de incremento y decremento en el campo de número */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .header img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .header h1 {
+        font-size: 1.2em;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    input {
+        font-size: 0.9em;
+    }
+
+    input[type="submit"], input[type="button"] {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .header h1 {
+        font-size: 1em;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    input[type="submit"], input[type="button"] {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+
+    form p {
+        font-size: 0.9em;
+    }
+}

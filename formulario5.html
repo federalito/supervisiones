@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Supervisión</title>
+    <link rel="stylesheet" href="clases/formulario5.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logocecom.webp" alt="Logo CECOM">
+            <h1>Formulario de Supervisión</h1>
+        </div>
+        <form id="tercerForm">
+            <!-- Grupo: Empleado Responsable -->
+            <div class="form-group">
+                <label for="empleado_responsable">9. Proporcione el Número de Empleado del Mando Responsable de la Supervisión</label>
+                <input type="number" id="empleado_responsable" name="empleado_responsable" placeholder="Número de empleado" required>
+                <input type="button" class="btn" id="buscarEmpleado" value="Buscar">
+            </div>
+
+            <!-- Grupo: Grado del Responsable -->
+            <div class="form-group">
+                <label for="grado_responsable">10. Grado del Responsable de la Supervisión</label>
+                <input type="text" id="grado_responsable" name="grado_responsable" value="Este campo se llenará automáticamente" readonly>
+            </div>
+
+            <!-- Grupo: Nombre del Responsable -->
+            <div class="form-group">
+                <label for="nombre_responsable">11. Nombre Completo del Responsable de la Supervisión</label>
+                <input type="text" id="nombre_responsable" name="nombre_responsable" value="Este campo se llenará automáticamente" readonly>
+            </div>
+
+            <!-- Grupo: Unidad -->
+            <div class="form-group">
+                <label for="unidad">12. Indique la unidad en la que se traslada el Mando</label>
+                <input type="text" id="unidad" name="unidad" placeholder="Ingrese la unidad" required>
+                <div id="autocomplete-container" class="autocomplete-suggestions"></div>
+            </div>
+
+            <!-- Botón de envío -->
+            <input type="button" class="btn" id="btnSiguiente" value="Siguiente">
+        </form>
+    </div>
+
+    <script>
+        // Datos del empleado responsable
+        const empleados = {
+            "722571": {
+                "grado": "GUARDIA",
+                "nombre_completo": "JIMENEZ GONZALEZ JULIO CESAR"
+            }
+        };
+
+        // Lógica para el botón Buscar
+        document.getElementById('buscarEmpleado').addEventListener('click', function () {
+            const numeroEmpleado = document.getElementById('empleado_responsable').value;
+
+            if (numeroEmpleado) {
+                const empleado = empleados[numeroEmpleado];
+
+                if (empleado) {
+                    document.getElementById('grado_responsable').value = empleado.grado;
+                    document.getElementById('nombre_responsable').value = empleado.nombre_completo;
+                } else {
+                    alert('Empleado no encontrado');
+                }
+            } else {
+                alert('Por favor, ingrese un número de empleado.');
+            }
+        });
+
+        // Redirección al cuarto formulario
+        document.getElementById('btnSiguiente').addEventListener('click', function () {
+            const empleadoResponsable = document.getElementById('empleado_responsable').value;
+            const gradoResponsable = document.getElementById('grado_responsable').value;
+            const nombreResponsable = document.getElementById('nombre_responsable').value;
+            const unidad = document.getElementById('unidad').value;
+
+            if (!empleadoResponsable || !gradoResponsable || !nombreResponsable || !unidad) {
+                alert('Por favor, complete todos los campos antes de continuar.');
+            } else {
+                window.location.href = 'formulario6.html';
+            }
+        });
+    </script>
+</body>
+</html>

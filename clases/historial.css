@@ -1,0 +1,370 @@
+/* ============================
+   SECCIÓN 1: ESTILOS GENERALES
+   ============================ */
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Animación de fondo con gradientes en movimiento */
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Fondo de pantalla animado */
+html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(270deg, #081F5C, #54162B, #871D3E, #19384a);
+    background-size: 400% 400%;
+    animation: moveGradient 15s ease infinite;
+    overflow-x: hidden; /* Evitar desplazamiento horizontal */
+    font-family: Arial, sans-serif;
+    color: #19384a;
+    text-align: center;
+}
+
+/* Pseudo-elemento para la imagen `cecom.jpg` con opacidad del 30% */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('cecom.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Sombra más fuerte */
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: 0 0 50px rgba(8, 31, 92, 0.9);
+    }
+    50% {
+        box-shadow: 0 0 80px rgba(8, 31, 92, 1);
+    }
+    100% {
+        box-shadow: 0 0 50px rgba(8, 31, 92, 0.9);
+    }
+}
+
+/* Contenedor principal responsivo con sombreado azul más fuerte */
+.content {
+    max-width: 1000px;
+    width: 90%;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(8, 31, 92, 0.9);
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1s ease-in-out, slideIn 0.8s ease-out, shadowAnimation 3s ease-in-out infinite;
+}
+
+/* Estilos del logo */
+.logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 30px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Estilos del título */
+h1 {
+    font-size: 2rem;
+    color: #081F5C;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #081F5C;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Formulario */
+.search-form {
+    margin-bottom: 30px;
+    text-align: center;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.search-form label {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #081F5C;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    border: 1px solid #19384a;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-field:focus {
+    border-color: #54162B;
+    box-shadow: 0 0 8px rgba(84, 22, 43, 0.6);
+}
+
+/* Mensaje de error */
+.error {
+    display: block;
+    font-size: 0.9rem;
+    color: red;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Input tipo submit */
+.btn-search {
+    background-color: #54162B;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.btn-search:hover {
+    background-color: #3a0f1d;
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9);
+}
+
+.btn-search:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Tabla */
+.table-container {
+    overflow-x: auto; /* Permitir desplazamiento horizontal en caso necesario */
+    margin-top: 20px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    text-align: center;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #19384a; /* Borde de las celdas */
+    font-size: 1rem;
+}
+
+th {
+    background-color: #54162B; /* Fondo del encabezado */
+    color: white; /* Texto del encabezado en blanco */
+    font-weight: bold;
+}
+
+td {
+    background-color: white; /* Fondo de las celdas en blanco */
+    color: black; /* Texto de las celdas en negro */
+}
+
+td input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
+
+/* Botón de ver registro */
+.btn-view {
+    background-color: #54162B;
+    color: white;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-view:hover {
+    background-color: #3a0f1d;
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.btn-view:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Mensaje informativo */
+.info-message {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #081F5C;
+    text-align: center;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Botón de regresar */
+.btn-back {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    color: white;
+    background-color: #54162B;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.btn-back:hover {
+    background-color: #3a0f1d;
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9);
+}
+
+.btn-back:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================
+   SECCIÓN 2: RESPONSIVIDAD
+   ============================ */
+
+/* Ajuste para tablets */
+@media (max-width: 1024px) {
+    .content {
+        width: 95%;
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .btn-search, .btn-back {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+    }
+}
+
+/* Ajuste para dispositivos móviles */
+@media (max-width: 768px) {
+    .content {
+        width: 95%;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .btn-search, .btn-back {
+        font-size: 0.8rem;
+        padding: 6px 15px;
+    }
+}
+
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .content {
+        width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    .btn-search, .btn-back {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+}
+
+/* Ajuste para pantallas grandes */
+@media (min-width: 1440px) {
+    .content {
+        max-width: 1200px;
+    }
+}

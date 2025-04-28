@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página con Fondo y Logo</title>
+  <link rel="stylesheet" href="clases/formulario2.css"> <!-- Archivo CSS -->
+</head>
+<body>
+
+  <!-- Botón hamburguesa -->
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <!-- Barra lateral con logo y menú -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img src="nuevologo.webp" alt="Nuevo Logo">
+    </div>
+    <ul>
+      <!-- Nuestra Institución -->
+      <li class="submenu">
+        <span class="submenu-toggle nuestra-institucion">NUESTRA INSTITUCIÓN</span>
+        <ul class="submenu-content">
+          <li><a href="misionvision.html">Misión y Visión</a></li>
+          <li><a href="himno.html">Himno Institucional</a></li>
+          <li><a href="divisas.html">Divisas Institucionales</a></li>
+          <li><a href="divisionmapa.html">Mapa Operativo</a></li>
+          <li><a href="informacion.html">Información Institucional</a></li>
+        </ul>
+      </li>
+      <!-- Servicios CECOM -->
+      <li class="submenu">
+        <span class="submenu-toggle servicios-cecom">SERVICIOS CECOM</span>
+        <ul class="submenu-content">
+          <li><a href="historial.php">Historial de Folios</a></li>
+          <li><a href="ticket.php">Reportar Ticket</a></li>
+          <li><a href="iphpdf.html">Obtén el IPH</a></li>
+          <li><a href="senacontrasena.html">Seña y Contraseña</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  
+  <!-- Contenedor del logo y texto de bienvenida -->
+  <div class="logo-container">
+    <img src="clases/logoestrella.webp" alt="Logo Estrella">
+    <div class="welcome-text">
+      <h1>SISTEMA INTEGRAL CECOM</h1>
+      <p>Seleccione la opción a la que desea ingresar</p>
+    </div>
+  </div>
+  
+  <!-- Contenedor de logos y botones -->
+  <div class="logos-container">
+    <div class="logo-item">
+      <img src="nuevologo.webp" alt="Nuevo Logo">
+      <div class="button-container">
+        <a href="https://spf.gob.mx/cecom/index.php/Login" target="_blank">
+          <button class="btn-option">Acceder</button>
+        </a>
+      </div>
+      <div class="text-container">
+        <p>Movimiento de<br>Unidad</p>
+      </div>
+    </div>
+    <div class="logo-item">
+      <img src="logocecom.webp" alt="Logo CECOM">
+      <div class="button-container">
+        <a href="formulario3.php">
+          <button class="btn-option">Acceder</button>
+        </a>
+      </div>
+      <div class="text-container">
+        <p>Registro de<br>Supervisiones</p>
+      </div>
+    </div>
+    <div class="logo-item">
+      <img src="app.png" alt="Logo CECOM">
+      <div class="button-container">
+        <a href="formulario3.php">
+          <button class="btn-option">Descargar</button>
+        </a>
+      </div>
+      <div class="text-container">
+        <p>Descarga la<br>App Rondinero</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Carrusel -->
+  <div class="carousel">
+    <div class="carousel-slide active">
+      <img src="imagenescarrusel/imagen1.png" alt="Imagen 1">
+    </div>
+    <div class="carousel-slide">
+      <img src="imagenescarrusel/imagen2.png" alt="Imagen 2">
+    </div>
+    <div class="carousel-slide">
+      <img src="imagenescarrusel/imagen3.png" alt="Imagen 3">
+    </div>
+    <div class="carousel-slide">
+      <img src="imagenescarrusel/imagen4.png" alt="Imagen 4">
+    </div>
+    <div class="carousel-slide">
+      <img src="imagenescarrusel/imagen5.png" alt="Imagen 5">
+    </div>
+    <div class="carousel-slide">
+      <img src="imagenescarrusel/imagen6.png" alt="Imagen 6">
+    </div>
+    <div class="carousel-slide">
+      <img src="imagenescarrusel/imagen7.png" alt="Imagen 7">
+    </div>
+    <div class="carousel-slide">
+      <img src="imagenescarrusel/imagen8.png" alt="Imagen 8">
+    </div>
+    
+    <!-- Flechas de navegación -->
+    <a class="carousel-prev" onclick="prevSlide()">&#10094;</a>
+    <a class="carousel-next" onclick="nextSlide()">&#10095;</a>
+    
+    <!-- Puntos indicadores -->
+    <div class="carousel-dots">
+      <span class="dot active" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+      <span class="dot" onclick="currentSlide(5)"></span>
+      <span class="dot" onclick="currentSlide(6)"></span>
+      <span class="dot" onclick="currentSlide(7)"></span>
+      <span class="dot" onclick="currentSlide(8)"></span>
+    </div>
+  </div>
+  
+  <!-- Scripts -->
+  <script>
+    // Función para el menú hamburguesa
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      menuToggle.classList.toggle('hidden');
+    });
+    
+    // Cerrar menú al hacer clic fuera
+    document.body.addEventListener('click', (event) => {
+      if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+        sidebar.classList.remove('active');
+        menuToggle.classList.remove('hidden');
+      }
+    });
+    
+    // Alternar submenús
+    document.querySelectorAll('.submenu-toggle').forEach(item => {
+      item.addEventListener('click', function(event) {
+        event.preventDefault();
+        this.parentElement.classList.toggle('active');
+      });
+    });
+    
+    // Resaltar opción seleccionada
+    document.querySelectorAll('.submenu-content a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelectorAll('.submenu-content a').forEach(el => {
+          el.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+    
+    // Temporizador de inactividad (2 minutos)
+    const tiempoInactividad = 120000;
+    let temporizadorInactividad;
+    
+    function redirigirAlLogin() {
+      window.location.href = "index.php";
+    }
+    
+    function reiniciarTemporizador() {
+      clearTimeout(temporizadorInactividad);
+      temporizadorInactividad = setTimeout(redirigirAlLogin, tiempoInactividad);
+    }
+    
+    function detectarActividad() {
+      reiniciarTemporizador();
+    }
+    
+    document.addEventListener("mousemove", detectarActividad);
+    document.addEventListener("keypress", detectarActividad);
+    document.addEventListener("click", detectarActividad);
+    
+    reiniciarTemporizador();
+    
+    // Carrusel infinito
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    
+    function showSlides(n) {
+      if (n >= slides.length) { slideIndex = 0; }
+      if (n < 0) { slideIndex = slides.length - 1; }
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      slides[slideIndex].classList.add('active');
+      dots[slideIndex].classList.add('active');
+    }
+    
+    function nextSlide() {
+      slideIndex++;
+      showSlides(slideIndex);
+    }
+    
+    function prevSlide() {
+      slideIndex--;
+      showSlides(slideIndex);
+    }
+    
+    function currentSlide(n) {
+      slideIndex = n - 1;
+      showSlides(slideIndex);
+    }
+    
+    // Auto play: cambia la diapositiva cada 3 segundos
+    setInterval(() => {
+      nextSlide();
+    }, 3000);
+  </script>
+</body>
+</html>

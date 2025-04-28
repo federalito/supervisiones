@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registro de supervisión para empleados de CECOM.">
+    <meta name="author" content="CECOM">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Registro de Supervisión</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Enlazamos el archivo CSS externo -->
+    <link rel="stylesheet" href="clases/index.css">
+</head>
+<body>
+    <!-- Imagen de fondo -->
+    <img src="clases/cecom.jpg" alt="Imagen Cecom" class="imagen-cecom" loading="lazy" draggable="false">
+    
+    <!-- Contenedor principal -->
+    <div class="contenedor">
+        <img src="clases/logoestrella.webp" alt="Logo Estrella" class="logo" draggable="false">
+        <h1>SISTEMA INTEGRAL CECOM</h1>
+        <form id="registroForm" action="formulario2.html" method="GET">
+            <label for="no_empleado">Número de Empleado</label>
+            <input type="text" id="no_empleado" name="no_empleado" placeholder="Número de empleado" required 
+                   inputmode="numeric" class="input-field" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            <label for="rfc">RFC con Homoclave</label>
+            <input type="text" id="rfc" name="rfc" placeholder="RFC" required 
+                   class="input-field"
+                   pattern="[A-Z]{4}[0-9]{6}[A-Z0-9]{3}"
+                   title="Formato correcto: 4 letras + 6 números + 3 caracteres">
+            <!-- Botón modificado -->
+            <input type="submit" class="submit-btn" onclick="validarYRedirigir()" value="Ingresar">
+        </form>
+    </div>
+</body>
+</html>

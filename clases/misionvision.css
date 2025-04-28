@@ -1,0 +1,242 @@
+/* ============================
+   SECCIÓN 1: ESTILOS GENERALES
+   ============================ */
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Animación de fondo con gradientes en movimiento */
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Fondo de pantalla animado */
+html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(270deg, #081F5C, #54162B, #871D3E, #19384a);
+    background-size: 400% 400%;
+    animation: moveGradient 15s ease infinite;
+    overflow-x: hidden; /* Evitar desplazamiento horizontal */
+    font-family: Arial, sans-serif;
+    color: #19384a;
+    text-align: center;
+}
+
+/* Pseudo-elemento para la imagen `cecom.jpg` con opacidad del 30% */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('cecom.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Sombra más fuerte */
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: 0 0 50px rgba(8, 31, 92, 0.9);
+    }
+    50% {
+        box-shadow: 0 0 80px rgba(8, 31, 92, 1);
+    }
+    100% {
+        box-shadow: 0 0 50px rgba(8, 31, 92, 0.9);
+    }
+}
+
+/* Contenedor principal responsivo con sombreado azul más fuerte */
+.content {
+    max-width: 800px;
+    width: 90%;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(8, 31, 92, 0.9);
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1s ease-in-out, slideIn 0.8s ease-out, shadowAnimation 3s ease-in-out infinite;
+}
+
+/* Estilos del logo */
+.logo {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 30px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Estilos de las secciones */
+.info-section {
+    margin-bottom: 30px;
+    padding: 0 20px;
+    animation: fadeIn 1.4s ease-in-out;
+}
+
+.info-section h2 {
+    font-size: 2rem;
+    color: #081F5C;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.info-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Contenedor del botón */
+.button-container {
+    margin-top: 30px;
+    animation: fadeIn 1.6s ease-in-out;
+}
+
+/* Estilos para botones con sombra más fuerte */
+.btn-option {
+    background-color: #54162B;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px 50px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Efecto hover en el botón con sombra aún más fuerte */
+.btn-option:hover {
+    background-color: #3a0f1d;
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* ============================
+   SECCIÓN 2: RESPONSIVIDAD
+   ============================ */
+
+/* Ajuste para tablets */
+@media (max-width: 1024px) {
+    .content {
+        width: 95%;
+        padding: 30px;
+    }
+
+    .info-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .info-section p {
+        font-size: 1.1rem;
+    }
+
+    .btn-option {
+        font-size: 1.3rem;
+        padding: 12px 40px;
+    }
+
+    .logo {
+        max-width: 350px;
+    }
+}
+
+/* Ajuste para dispositivos móviles */
+@media (max-width: 768px) {
+    .content {
+        width: 95%;
+        padding: 25px;
+    }
+
+    .info-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .info-section p {
+        font-size: 1rem;
+    }
+
+    .btn-option {
+        font-size: 1.2rem;
+        padding: 12px 35px;
+    }
+
+    .logo {
+        max-width: 300px;
+    }
+}
+
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .content {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .info-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .info-section p {
+        font-size: 0.9rem;
+    }
+
+    .btn-option {
+        font-size: 1rem;
+        padding: 10px 30px;
+    }
+
+    .logo {
+        max-width: 250px;
+    }
+}
+
+/* Ajuste para pantallas grandes */
+@media (min-width: 1440px) {
+    .content {
+        max-width: 1200px;
+    }
+}

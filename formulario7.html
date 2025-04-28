@@ -1,0 +1,97 @@
+}<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Supervisión</title>
+    <link rel="stylesheet" href="clases/formulario7.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logocecom.webp" alt="Logo CECOM">
+            <h1>Formulario de Supervisión</h1>
+        </div>
+        <form action="registroformulario.html" method="get" enctype="multipart/form-data">
+            <h2>17. Seleccione los rubros que se supervisaron</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Supervisor</th>
+                        <th>SI</th>
+                        <th>NO</th>
+                        <th>NO APLICA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Carpeta Normativa</td>
+                        <td><input type="radio" name="carpeta" value="si" required></td>
+                        <td><input type="radio" name="carpeta" value="no"></td>
+                        <td><input type="radio" name="carpeta" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Personal</td>
+                        <td><input type="radio" name="personal" value="si" required></td>
+                        <td><input type="radio" name="personal" value="no"></td>
+                        <td><input type="radio" name="personal" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Equipo Balístico</td>
+                        <td><input type="radio" name="equipo" value="si" required></td>
+                        <td><input type="radio" name="equipo" value="no"></td>
+                        <td><input type="radio" name="equipo" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Armamento</td>
+                        <td><input type="radio" name="armamento" value="si" required></td>
+                        <td><input type="radio" name="armamento" value="no"></td>
+                        <td><input type="radio" name="armamento" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Unidad Institucional</td>
+                        <td><input type="radio" name="unidad" value="si" required></td>
+                        <td><input type="radio" name="unidad" value="no"></td>
+                        <td><input type="radio" name="unidad" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Entrevista con el Administrador del Contrato</td>
+                        <td><input type="radio" name="entrevista" value="si" required></td>
+                        <td><input type="radio" name="entrevista" value="no"></td>
+                        <td><input type="radio" name="entrevista" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Pase de Lista y Revista</td>
+                        <td><input type="radio" name="pase" value="si" required></td>
+                        <td><input type="radio" name="pase" value="no"></td>
+                        <td><input type="radio" name="pase" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Recorrido por los Puntos de Vigilancia</td>
+                        <td><input type="radio" name="recorrido" value="si" required></td>
+                        <td><input type="radio" name="recorrido" value="no"></td>
+                        <td><input type="radio" name="recorrido" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Revisión de Habitaciones (si corresponde)</td>
+                        <td><input type="radio" name="habitaciones" value="si" required></td>
+                        <td><input type="radio" name="habitaciones" value="no"></td>
+                        <td><input type="radio" name="habitaciones" value="na"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <label for="observaciones">18. Observaciones realizadas por el Supervisor</label>
+            <textarea id="observaciones" name="observaciones" placeholder="Escriba sus observaciones aquí..." required></textarea>
+
+            <!-- Nueva pregunta 19: Subir fotografía -->
+            <label for="foto-bitacora">19. Agrega una fotografía de la bitácora en tiempo y forma (fecha, que realizó el supervisor)</label>
+            <input type="file" id="foto-bitacora" name="foto-bitacora" accept="image/*" required>
+            <small>Formatos permitidos: JPG, PNG, GIF. Tamaño máximo: 5MB.</small>
+
+            <!-- Botón de envío -->
+            <input type="submit" class="btn" value="Registrar Supervisión">
+        </form>
+    </div>
+</body>
+</html>

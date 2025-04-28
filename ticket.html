@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reportar Ticket</title>
+
+    <link rel="stylesheet" href="clases/ticket.css">
+
+</head>
+
+<body>
+
+
+
+    <!-- Contenedor del fondo con la imagen cecom -->
+
+    <div class="background-container">
+
+        <img src="clases/logoestrella.webp" alt="Logo Estrella" class="logo">
+
+<form action="registra_ticket.php" method="POST">
+
+    <div class="form-container">
+
+        <label for="options">1. Seleccione la opción que no encuentra:</label>
+
+        <select id="options" name="options" class="dropdown">
+
+            <option value="" disabled selected>Seleccione una opción</option>
+
+            <option value="Servicio">SERVICIO</option>
+
+            <option value="Instalación">INSTALACION</option>
+
+            <option value="Supervisor">SUPERVISOR</option>
+
+            <option value="Unidad">UNIDAD</option>
+
+        </select>
+
+
+
+                   <label for="full-name">Ingresa su Nombre Completo:</label>
+
+                        <input type="text" id="full-name" name="full_name" class="input-field uppercase" placeholder="Ejemplo: Guardia Gonzalez Jiménez Julio César" required>
+
+                    <label for="state">Ingrese el nombre del Servicio:</label>
+
+                    <input type="text" id="service_name" name="service_name" class="input-field uppercase" placeholder="Ejemplo: Nombre del servicio" required>
+  
+
+                    <label for="region">Seleccione la Región:</label>
+
+                    <select id="region" name="region" class="dropdown">
+
+                        <option value="" disabled selected>Seleccione una Región</option>
+
+                        <?php echo $cmp_regiones; ?>
+
+                    </select>
+
+
+    
+                        <label for="phone">Ingresa tu número telefónico:</label>
+
+                        <input type="tel" id="phone" name="phone" class="input-field numbers-only" placeholder="Ejemplo: 55-56-78-41" required>
+
+                          
+                           <label for="state">Ingrese sus comentarios:</label>
+
+                            <input type="text" id="state" name="state" class="input-field uppercase" placeholder="Ejemplo: Direccion Completa, Coordenadas, etc.." >
+
+                        <input type="submit" class="btn-submit" value="Enviar">
+
+			</form>
+
+
+
+    <script>
+
+
+
+
+        // Convertir texto a mayúsculas automáticamente en "Estado"
+
+        stateInput.addEventListener('input', function () {
+
+            this.value = this.value.toUpperCase().replace(/[^A-ZÁÉÍÓÚÑ ]/g, ''); // Solo letras mayúsculas y espacios
+
+        });
+
+
+        // Convertir texto a mayúsculas automáticamente en otros campos
+
+        document.addEventListener('input', function (event) {
+
+            if (event.target.classList.contains('uppercase')) {
+
+                event.target.value = event.target.value.toUpperCase();
+
+            }
+
+        });
+
+
+        // Permitir solo números en el campo "Teléfono"
+
+        document.addEventListener('input', function (event) {
+
+            if (event.target.classList.contains('numbers-only')) {
+
+                event.target.value = event.target.value.replace(/[^0-9]/g, '');
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+

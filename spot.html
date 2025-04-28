@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+        .carrusel {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+            animation: subir 20s linear infinite;
+        }
+        @keyframes subir {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="carrusel">
+        <p>35 A TODOS LOS MANDOS: SE EXHORTA PARA QUE TODO EL PERSONAL OPERATIVO PORTE EL UNIFORME, CONDECORACIONES, INSIGNIAS Y DIVISAS, CON GALLARDÍA Y PULCRITUD.</p>
+        <p>SE EXHORTA A LOS COORDINADORES DE DESPLIEGUE Y MANDOS REGIONALES: CONCIENTIZAR A TODOS LOS ELEMENTOS, QUE EL POLICÍA DE PROTECCIÓN FEDERAL DEBE SER SINÓNIMO DE RESPETO, DE EJEMPLO, DE PROXIMIDAD A LA CIUDADANÍA, DE AMABILIDAD Y DE HONRADEZ.</p>
+        <p>SE EXHORTA DIFUNDIR EN TODOS LOS SERVICIOS, INMUEBLES Y OFICINAS DE LA DIRECCIÓN GENERAL DE SERVICIOS DE SEGURIDAD, LA ESTRUCTURA DEL SERVICIO DE PROTECCIÓN FEDERAL Y LA CADENA DE MANDO.</p>
+    </div>
+</body>
+</html>

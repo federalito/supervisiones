@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Supervisión</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="clases/formulario6.css">
+</head>
+<body>
+    <main class="container">
+        <header class="header">
+            <img src="logocecom.webp" alt="Logo CECOM">
+            <h1>Formulario de Supervisión</h1>
+        </header>
+
+        <form action="formulario7.html" method="get">
+            <fieldset>
+
+                <label for="fecha">13. Fecha de la Supervisión</label>
+                <input type="text" id="fecha" name="fecha" class="date-picker" required>
+
+                <label for="hora_inicio">14. Hora de Inicio</label>
+                <input type="time" id="hora_inicio" name="hora_inicio" class="time-picker" required>
+
+                <label for="hora_fin">15. Hora de Finalización</label>
+                <input type="time" id="hora_fin" name="hora_fin" class="time-picker" required>
+
+                <label for="trato">16. Trato recibido por el Supervisor</label>
+                <select id="trato" name="trato" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="excelente">Excelente</option>
+                    <option value="bueno">Bueno</option>
+                    <option value="regular">Regular</option>
+                    <option value="malo">Malo</option>
+                </select>
+            </fieldset>
+
+            <!-- Botón de envío como input -->
+            <input type="submit" class="btn" value="Siguiente">
+        </form>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <script>
+        // Inicializar el calendario en español
+        flatpickr("#fecha", {
+            dateFormat: "d-m-Y",
+            altInput: true,
+            altFormat: "F j, Y",
+            locale: "es"
+        });
+
+        // Forzar formato de 24 horas en los campos de hora
+        document.querySelectorAll('.time-picker').forEach(input => {
+            input.addEventListener('input', function () {
+                let value = this.value;
+                if (!value) return;
+                
+                let [hours, minutes] = value.split(':');
+                hours = Math.min(23, Math.max(0, parseInt(hours))).toString().padStart(2, '0');
+                minutes = Math.min(59, Math.max(0, parseInt(minutes))).toString().padStart(2, '0');
+                
+                this.value = `${hours}:${minutes}`;
+            });
+        });
+    </script>
+</body>
+</html>

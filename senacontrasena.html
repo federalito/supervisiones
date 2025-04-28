@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imagen de Fondo</title>
+  <link rel="stylesheet" href="clases/senacontrasena.css">
+</head>
+<body>
+  <div class="white-container">
+    <img src="imagenes/senaycontrasena.webp" alt="Seña y Contraseña">
+    <a href="imagenes/senaycontrasena.webp" download="senaycontrasena.webp">
+      <button class="download-btn">Descargar imagen</button>
+    </a>
+  </div>
+  <div class="back-button-container">
+    <a href="formulario2.php">
+      <button class="back-btn">Regresar</button>
+    </a>
+  </div>
+  
+  <!-- Script para redireccionar automáticamente después de 2 minutos -->
+  <script>
+    setTimeout(function(){
+      window.location.href = "index.php";
+    }, 120000);
+  </script>
+</body>
+</html>

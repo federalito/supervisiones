@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial</title>
+    <link rel="stylesheet" href="clases/historial.css">
+</head>
+<body>
+    <div class="content">
+        <!-- Logo centrado -->
+        <img src="logocecom.webp" alt="Logo CECOM" class="logo">
+
+        <!-- Título principal -->
+        <h1>Historial de Folios</h1>
+
+        <!-- Formulario para número de empleado -->
+        <form id="search-form" class="search-form">
+            <label for="employee-number">Ingresa tu Número de empleado:</label>
+            <input type="text" id="employee-number" name="employee-number" class="input-field" placeholder="Num. de empleado" required>
+            <span id="error-message" class="error hidden">Por favor, ingresa un número de empleado válido.</span>
+            <input type="submit" value="Buscar" class="btn-search">
+        </form>
+
+        <!-- Contenedor de resultados (visible desde el inicio) -->
+        <div id="results-container">
+            <h2>Tus últimos 05 folios registrados:</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No. de empl</th>
+                            <th>Nombre completo</th>
+                            <th>Fecha de Registro</th>
+                            <th>Folio</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-table">
+                        <!-- Filas vacías por defecto -->
+                        <tr>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="button" class="btn-view" value="Ver registro" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="button" class="btn-view" value="Ver registro" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="button" class="btn-view" value="Ver registro" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="button" class="btn-view" value="Ver registro" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="text" readonly></td>
+                            <td><input type="button" class="btn-view" value="Ver registro" disabled></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Mensaje informativo -->
+        <p class="info-message">
+            Cuando consultes tus Registros de Supervisión, solo se mostrarán los cinco folios más recientes que hayas registrado. Es importante mencionar que el Puesto de Mando cuenta únicamente con una plataforma de Supervisión que te asignará un folio por cada registro realizado.
+        </p>
+
+        <!-- Botón de regresar como input -->
+        <input type="button" class="btn-back" value="Regresar" onclick="window.location.href='formulario2.html'">
+    </div>
+
+    <script>
+        const searchForm = document.getElementById('search-form');
+        const resultsTable = document.getElementById('results-table');
+        const errorMessage = document.getElementById('error-message');
+
+        // Datos de ejemplo (reemplazar con base de datos real en el backend)
+        const sampleData = [
+            { employeeNumber: "12345", name: "Juan Pérez", date: "2023-01-01", folio: "F12345" },
+            { employeeNumber: "12345", name: "Juan Pérez", date: "2023-01-15", folio: "F12346" },
+            { employeeNumber: "12345", name: "Juan Pérez", date: "2023-02-01", folio: "F12347" },
+            { employeeNumber: "12345", name: "Juan Pérez", date: "2023-02-15", folio: "F12348" },
+            { employeeNumber: "12345", name: "Juan Pérez", date: "2023-03-01", folio: "F12349" }
+        ];
+
+        // Función para mostrar los datos en la tabla
+        function displayData(data) {
+            const rows = resultsTable.querySelectorAll('tr'); // Obtener todas las filas existentes
+            rows.forEach((row, index) => {
+                if (data[index]) {
+                    const inputs = row.querySelectorAll('input');
+                    inputs[0].value = data[index].employeeNumber;
+                    inputs[1].value = data[index].name;
+                    inputs[2].value = data[index].date;
+                    inputs[3].value = data[index].folio;
+                    inputs[4].disabled = false; // Habilitar el botón "Ver registro"
+                } else {
+                    const inputs = row.querySelectorAll('input');
+                    inputs[0].value = "";
+                    inputs[1].value = "";
+                    inputs[2].value = "";
+                    inputs[3].value = "";
+                    inputs[4].disabled = true; // Deshabilitar el botón "Ver registro"
+                }
+            });
+        }
+
+        // Manejo del evento de envío del formulario
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Evitar recargar la página
+
+            const employeeNumber = document.getElementById('employee-number').value.trim();
+
+            // Validación del número de empleado (solo números, no vacío)
+            if (!/^\d+$/.test(employeeNumber)) {
+                errorMessage.classList.remove('hidden'); // Mostrar mensaje de error
+                return;
+            }
+
+            errorMessage.classList.add('hidden'); // Ocultar mensaje de error si el input es válido
+
+            // Filtrar los datos por número de empleado
+            const filteredData = sampleData.filter(entry => entry.employeeNumber === employeeNumber);
+
+            if (filteredData.length === 0) {
+                alert("Número de empleado no encontrado. Intente nuevamente.");
+                return;
+            }
+
+            // Mostrar los datos filtrados en la tabla
+            displayData(filteredData);
+        });
+
+        // Función para ver el registro (simulación)
+        function viewRecord(folio) {
+            alert(`Ver registro del folio: ${folio}`);
+        }
+    </script>
+
+    <script>
+        // Tiempo de inactividad en milisegundos (2 minutos = 120,000 ms)
+        const tiempoInactividad = 120000; // 2 minutos
+        let temporizadorInactividad;
+
+        // Función para redirigir al usuario
+        function redirigirAlLogin() {
+            window.location.href = "index.html"; // Cambia "index.html" por la ruta correcta
+        }
+
+        // Reiniciar el temporizador de inactividad
+        function reiniciarTemporizador() {
+            clearTimeout(temporizadorInactividad);
+            temporizadorInactividad = setTimeout(redirigirAlLogin, tiempoInactividad);
+        }
+
+        // Detectar actividad del usuario
+        function detectarActividad() {
+            reiniciarTemporizador();
+        }
+
+        document.addEventListener("mousemove", detectarActividad);
+        document.addEventListener("keypress", detectarActividad);
+        document.addEventListener("click", detectarActividad);
+
+        reiniciarTemporizador();
+    </script>
+</body>
+</html>

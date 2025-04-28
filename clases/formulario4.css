@@ -1,0 +1,204 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(270deg, #081F5C, #54162B, #871D3E, #19384a); /* Gradiente animado */
+    background-size: 400% 400%; /* Tamaño del fondo para la animación */
+    animation: moveGradient 15s ease infinite; /* Animación de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Usar min-height para asegurar que ocupe toda la pantalla */
+    color: #003366;
+    position: relative;
+}
+
+/* Animación de fondo con gradientes en movimiento */
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Imagen traslúcida encima del fondo */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('cecom.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.40;
+    z-index: 1;
+}
+
+/* Animación Slide-in (Deslizamiento desde abajo) */
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animación Fade-in (Aparición progresiva) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animación de sombra */
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: 0 0 30px rgba(8, 31, 92, 0.9); /* Sombra inicial más grande y visible */
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(8, 31, 92, 0.9); /* Sombra más grande y visible */
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(8, 31, 92, 0.9); /* Volver a la sombra inicial */
+    }
+}
+
+/* Contenedor principal con animación de entrada */
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo más opaco */
+    padding: 2em; /* Usar unidades relativas */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    max-width: 500px; /* Ancho máximo reducido */
+    width: 90%;
+    animation: slideIn 1s ease-out, shadowAnimation 3s ease-in-out infinite; /* Agregar la animación de sombra */
+    z-index: 2;
+    margin: 1em; /* Margen para evitar que toque los bordes */
+}
+
+/* Animación para los elementos del formulario */
+form label, form select, form input {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Encabezado */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5em; /* Usar unidades relativas */
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.header img {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+}
+
+.header h1 {
+    font-size: 1.8em;
+    color: #003366;
+    margin: 0;
+    flex: 1;
+}
+
+/* Estilos para los grupos de formulario */
+.form-group {
+    margin-bottom: 1.5em; /* Usar unidades relativas */
+}
+
+/* Estilos para los labels */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5em; /* Usar unidades relativas */
+    color: #003366;
+    text-align: center; /* Centrar el texto del label */
+}
+
+/* Estilos para los selects */
+select {
+    width: 100%;
+    padding: 0.75em; /* Usar unidades relativas */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: white;
+    appearance: none; /* Eliminar la apariencia por defecto del select */
+    text-align: center; /* Centrar el texto */
+}
+
+select:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Estilos para los botones */
+input[type="submit"] {
+    width: 100%;
+    padding: 0.75em; /* Usar unidades relativas */
+    background-color: #54162B;
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    margin-top: 1em; /* Usar unidades relativas */
+}
+
+input[type="submit"]:hover {
+    background-color: #3a0f1d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5em; /* Ajustar el padding para pantallas pequeñas */
+    }
+
+    .header img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .header h1 {
+        font-size: 1.5em; /* Reducir el tamaño del título en móviles */
+    }
+
+    select, input[type="submit"] {
+        font-size: 0.9em; /* Reducir el tamaño de la fuente en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.2em; /* Ajustar aún más el tamaño del título en pantallas muy pequeñas */
+    }
+
+    .header img {
+        width: 50px;
+        height: 50px;
+    }
+}

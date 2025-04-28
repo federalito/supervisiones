@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divisas</title>
+    <link rel="stylesheet" href="clases/divisas.css">
+</head>
+<body>
+    <div class="content">
+        <h1>DIVISAS</h1>
+
+        <p class="intro-text">
+            Las divisas utilizadas por el SPF comprenden condecoraciones, escudos e insignias. 
+            Su uso está normado por el Manual de Uniformes y Divisas del Servicio de Protección Federal 
+            y tienen por objeto reconocer e identificar:
+        </p>
+
+        <ul class="list">
+            <li><strong>I.</strong> Nivel jerárquico.</li>
+            <li><strong>II.</strong> Especialidad.</li>
+            <li><strong>III.</strong> Condecoraciones.</li>
+        </ul>
+
+        <p class="closing-text">
+            Las y los integrantes debemos usar y portar los uniformes, únicamente con las divisas autorizadas.
+        </p>
+
+        <div class="image-container">
+            <img src="jerarquica.webp" alt="Divisas Jerárquicas">
+        </div>
+    </div>
+
+    <div class="video-container">
+        <h2>Videos Informativos</h2>
+        
+        <div class="video">
+            <h3>Uso correcto del uniforme básico</h3>
+            <iframe src="https://www.youtube.com/embed/0VIquc6ibjs" 
+                title="Uso correcto del uniforme básico" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="video">
+            <h3>Uniforme táctico azul</h3>
+            <iframe src="https://www.youtube.com/embed/eLwHJpnJyWI" 
+                title="Uniforme táctico azul" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="video">
+            <h3>Uniforme caqui</h3>
+            <iframe src="https://www.youtube.com/embed/RjLkC0bGBfA" 
+                title="Uniforme caqui" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="video">
+            <h3>Especificaciones y accesorios</h3>
+            <iframe src="https://www.youtube.com/embed/UWob4KV9z6w" 
+                title="Especificaciones y accesorios" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a href="formulario2.html">
+            <button class="btn-option">Regresar</button>
+        </a>
+    </div>
+
+    <script>
+        // Tiempo de inactividad en milisegundos (2 minutos = 120,000 ms)
+        const tiempoInactividad = 120000; // 2 minutos
+        let temporizadorInactividad;
+
+        // Función para redirigir al usuario
+        function redirigirAlLogin() {
+            window.location.href = "index.html"; // Cambia "index.html" por la ruta correcta
+        }
+
+        // Reiniciar el temporizador de inactividad
+        function reiniciarTemporizador() {
+            clearTimeout(temporizadorInactividad);
+            temporizadorInactividad = setTimeout(redirigirAlLogin, tiempoInactividad);
+        }
+
+        // Detectar actividad del usuario
+        function detectarActividad() {
+            reiniciarTemporizador();
+        }
+
+        document.addEventListener("mousemove", detectarActividad);
+        document.addEventListener("keypress", detectarActividad);
+        document.addEventListener("click", detectarActividad);
+
+        reiniciarTemporizador();
+    </script>
+</body>
+</html>

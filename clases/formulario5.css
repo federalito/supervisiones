@@ -1,0 +1,262 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Fondo animado con gradiente */
+    background: linear-gradient(270deg, #081F5C, #54162B, #871D3E, #19384a);
+    background-size: 400% 400%;
+    animation: moveGradient 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #003366;
+    position: relative;
+}
+
+/* Animación de fondo con gradientes en movimiento */
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Imagen traslúcida encima del fondo */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('cecom.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.40;
+    z-index: 1;
+}
+
+/* Animación Slide-in (Deslizamiento desde abajo) */
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animación Fade-in (Aparición progresiva) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animación de sombra */
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: 0 0 30px rgba(8, 31, 92, 0.9);
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(8, 31, 92, 0.9);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(8, 31, 92, 0.9);
+    }
+}
+
+/* Contenedor principal con animación de entrada */
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2em;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    animation: slideIn 1s ease-out, shadowAnimation 3s ease-in-out infinite;
+    z-index: 2;
+    margin: 1em;
+}
+
+/* Estilos para todos los contenedores */
+body > div {
+    max-width: 500px;
+    width: 90%;
+    margin: 1em;
+}
+
+/* Animación para los elementos del formulario */
+form label,
+form input,
+form button {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Encabezado */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5em;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.header img {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+}
+
+.header h1 {
+    font-size: 1.8em;
+    color: #003366;
+    margin: 0;
+    flex: 1;
+}
+
+/* Estilos para los grupos de formulario */
+.form-group {
+    margin-bottom: 1.5em;
+}
+
+/* Estilos para los labels */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    color: #003366;
+    text-align: center;
+}
+
+/* Estilos para los inputs */
+input {
+    width: 100%;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: white;
+    appearance: none;
+    text-align: center;
+}
+
+/* Quitar flechas en los inputs de tipo número */
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Campos de solo lectura */
+input[readonly] {
+    background-color: #f3f3f3;
+    cursor: not-allowed;
+    font-weight: bold;
+    color: #003366;
+}
+
+/* Estilos para los botones */
+.btn {
+    width: 100%;
+    padding: 0.75em;
+    background-color: #54162B;
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    margin-top: 0.5em;
+}
+
+.btn:hover {
+    background-color: #3a0f1d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Autocompletado */
+.autocomplete-suggestions {
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+    width: calc(100% - 30px);
+}
+
+.autocomplete-suggestion {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.autocomplete-suggestion:hover {
+    background: #f0f0f0;
+}
+
+/* Estilos para select */
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5em;
+    }
+    .header img {
+        width: 60px;
+        height: 60px;
+    }
+    .header h1 {
+        font-size: 1.5em;
+    }
+    input, .btn {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.2em;
+    }
+    .header img {
+        width: 50px;
+        height: 50px;
+    }
+}

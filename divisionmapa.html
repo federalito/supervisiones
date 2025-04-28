@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>División del Mapa</title>
+    <link rel="stylesheet" href="clases/divisionmapa.css">
+</head>
+<body>
+    <div class="content">
+        <h1>Mapa Operativo</h1>
+        <div class="image-container">
+            <img src="maparegiones.webp" alt="Mapa de Regiones">
+        </div>
+        <div class="button-container">
+            <a href="maparegiones.webp" download="MapaRegiones">
+                <button class="btn-download">Descargar Mapa</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="back-button-container">
+        <a href="formulario2.html">
+            <button class="btn-back">Regresar</button>
+        </a>
+    </div>
+    
+    <script>
+    // Tiempo de inactividad en milisegundos (2 minutos = 120,000 ms)
+    const tiempoInactividad = 120000; // 2 minutos
+    let temporizadorInactividad;
+
+    // Función para redirigir al usuario
+    function redirigirAlLogin() {
+        window.location.href = "index.html"; // Cambia "index.html" por la ruta correcta
+    }
+
+    // Reiniciar el temporizador de inactividad
+    function reiniciarTemporizador() {
+        clearTimeout(temporizadorInactividad);
+        temporizadorInactividad = setTimeout(redirigirAlLogin, tiempoInactividad);
+    }
+
+    // Detectar actividad del usuario
+    function detectarActividad() {
+        reiniciarTemporizador();
+    }
+
+    document.addEventListener("mousemove", detectarActividad);
+    document.addEventListener("keypress", detectarActividad);
+    document.addEventListener("click", detectarActividad);
+
+    reiniciarTemporizador();
+</script>
+
+</body>
+</html>

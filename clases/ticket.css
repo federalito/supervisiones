@@ -1,0 +1,329 @@
+/* ============================
+   SECCIÓN 1: ESTILOS GENERALES
+   ============================ */
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Animación de fondo con gradientes en movimiento */
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Fondo de pantalla animado */
+html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(270deg, #081F5C, #54162B, #871D3E, #19384a);
+    background-size: 400% 400%;
+    animation: moveGradient 15s ease infinite;
+    overflow-x: hidden; /* Evitar desplazamiento horizontal */
+    font-family: Arial, sans-serif;
+    color: #19384a;
+    text-align: center;
+}
+
+/* Pseudo-elemento para la imagen `cecom.jpg` con opacidad del 30% */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('cecom.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Sombra más fuerte */
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: 0 0 50px rgba(8, 31, 92, 0.9);
+    }
+    50% {
+        box-shadow: 0 0 80px rgba(8, 31, 92, 1);
+    }
+    100% {
+        box-shadow: 0 0 50px rgba(8, 31, 92, 0.9);
+    }
+}
+
+/* Contenedor principal responsivo con sombreado azul más fuerte */
+.form-container {
+    max-width: 1000px;
+    width: 90%;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 40px rgba(8, 31, 92, 0.9);
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1s ease-in-out, slideIn 0.8s ease-out, shadowAnimation 3s ease-in-out infinite;
+}
+
+/* Estilo del título */
+h1 {
+    font-size: 2rem;
+    color: #081F5C;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Logo centrado con animación */
+.logo {
+    display: block;
+    margin: 20px auto;
+    width: 50%;
+    max-width: 400px;
+    height: auto;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out forwards;
+    position: relative;
+    z-index: 2;
+}
+
+/* Menú desplegable */
+.dropdown {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #19384a;
+    border-radius: 8px;
+    background-color: white;
+    color: #19384a;
+    margin-bottom: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown:focus {
+    border-color: #54162B;
+    box-shadow: 0 0 8px rgba(84, 22, 43, 0.6);
+}
+
+/* Campos de entrada */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #19384a;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-field:focus {
+    border-color: #54162B;
+    box-shadow: 0 0 8px rgba(84, 22, 43, 0.6);
+}
+
+/* Botón de envío */
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: #54162B;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Efecto hover en el botón con sombra aún más fuerte */
+.btn-submit:hover {
+    background-color: #3a0f1d;
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* Efecto al hacer clic */
+.btn-submit:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor dinámico oculto por defecto */
+.hidden {
+    display: none;
+}
+
+/* ============================
+   ESTILOS PARA BOTONES "BUSCAR" Y "SIGUIENTE"
+   ============================ */
+
+/* Estilo base para los botones */
+.btn-search,
+.btn-next {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    animation: fadeIn 1.2s ease-in-out;
+    margin-bottom: 15px; /* Espacio entre botones */
+}
+
+/* Color y hover para el botón "Buscar" */
+.btn-search {
+    background-color: #081F5C; /* Azul oscuro */
+}
+
+.btn-search:hover {
+    background-color: #0a2a7a; /* Azul más claro */
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* Color y hover para el botón "Siguiente" */
+.btn-next {
+    background-color: #871D3E; /* Rojo oscuro */
+}
+
+.btn-next:hover {
+    background-color: #a8254d; /* Rojo más claro */
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* Efecto al hacer clic en los botones */
+.btn-search:active,
+.btn-next:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================
+   SECCIÓN 2: RESPONSIVIDAD
+   ============================ */
+
+/* Ajuste para tablets */
+@media (max-width: 1024px) {
+    .form-container {
+        width: 95%;
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .logo {
+        width: 60%;
+        max-width: 350px;
+    }
+
+    .btn-submit,
+    .btn-search,
+    .btn-next {
+        font-size: 1.1rem;
+        padding: 12px;
+    }
+}
+
+/* Ajuste para dispositivos móviles */
+@media (max-width: 768px) {
+    .form-container {
+        width: 95%;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .logo {
+        width: 70%;
+        max-width: 300px;
+    }
+
+    .btn-submit,
+    .btn-search,
+    .btn-next {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .form-container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .logo {
+        width: 80%;
+        max-width: 250px;
+    }
+
+    .btn-submit,
+    .btn-search,
+    .btn-next {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}
+
+/* Ajuste para pantallas grandes */
+@media (min-width: 1440px) {
+    .form-container {
+        max-width: 1200px;
+    }
+}

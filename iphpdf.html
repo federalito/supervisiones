@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informe Policial Homologado</title>
+  <link rel="stylesheet" href="clases/iphpdf.css">
+</head>
+<body>
+  <!-- Contenedor blanco -->
+  <div class="white-container">
+    <h1>Conoce los lineamientos y formatos del Informe Policial Homologado</h1>
+    <ul class="content-list">
+      <!-- Lineamientos del IPH -->
+      <li>
+        Lineamientos del Informe Policial Homologado IPH
+        <a href="documentospdf/LineamientosInformePolicialHomologadoIph.pdf" download="LineamientosInformePolicialHomologadoIph.pdf">
+          <button class="download-btn">Descargar</button>
+        </a>
+      </li>
+      <!-- Formato del IPH Delitos -->
+      <li>
+        Formato del IPH Delitos
+        <a href="documentospdf/IPHDELITOS.pdf" download="IPHDELITOS.pdf">
+          <button class="download-btn">Descargar</button>
+        </a>
+      </li>
+      <!-- Formato del IPH Justicia Cívica -->
+      <li>
+        Formato del IPH Justicia Cívica
+        <a href="documentospdf/IPHJUSTICIACIVICA.pdf" download="IPHJUSTICIACIVICA.pdf">
+          <button class="download-btn">Descargar</button>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Botón "Regresar" dentro del contenedor -->
+    <div class="back-button-container">
+      <a href="formulario2.php">
+        <button class="back-btn">Regresar</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- Script para redireccionar automáticamente después de 2 minutos -->
+  <script>
+    setTimeout(function(){
+      window.location.href = "index.php";
+    }, 120000);
+  </script>
+</body>
+</html>

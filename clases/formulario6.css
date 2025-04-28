@@ -1,0 +1,212 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(270deg, #081F5C, #54162B, #871D3E, #19384a);
+    background-size: 400% 400%;
+    animation: moveGradient 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #003366;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Animación de fondo con gradientes en movimiento */
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Imagen traslúcida */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('cecom.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.40;
+    z-index: 1;
+}
+
+/* Animación Slide-in + Fade-in (de abajo hacia arriba) */
+@keyframes slide-in-fade-in {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animación de sombra */
+@keyframes shadowAnimation {
+    0% {
+        box-shadow: 0 0 30px rgba(8, 31, 92, 0.9); /* Sombra inicial más grande y visible */
+    }
+    50% {
+        box-shadow: 0 0 60px rgba(8, 31, 92, 0.9); /* Sombra más grande y visible */
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(8, 31, 92, 0.9); /* Volver a la sombra inicial */
+    }
+}
+
+/* Contenedor principal con animación */
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo más opaco */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    animation: slide-in-fade-in 1s ease-out, shadowAnimation 3s ease-in-out infinite; /* Agregar la animación de sombra */
+}
+
+/* Encabezado */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+}
+
+.header img {
+    width: 70px;
+    height: 70px;
+    margin-right: 15px;
+}
+
+.header h1 {
+    font-size: 1.5em;
+    color: #003366;
+    margin: 0;
+    flex: 1;
+}
+
+/* Separación entre el título y la primera pregunta */
+fieldset {
+    border: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 20px;
+}
+
+/* Campos de entrada */
+label {
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 8px;
+    color: #003366;
+    width: 100%;
+    text-align: left;
+}
+
+/* Ajuste para inputs y selects */
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+    text-align: center; /* Centrar el texto */
+}
+
+/* Estilo para los inputs de tiempo */
+input[type="time"] {
+    background: white;
+    cursor: pointer;
+}
+
+/* Ajuste de separación en inputs de tiempo */
+input, select {
+    margin-bottom: 20px;
+}
+
+input:focus, select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Botón */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #54162B;
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    margin-top: 30px;
+}
+
+.btn:hover {
+    background-color: #3a0f1d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .header img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .header h1 {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .header h1 {
+        font-size: 1.2em;
+    }
+
+    label, input, select {
+        font-size: 0.85em;
+    }
+}
